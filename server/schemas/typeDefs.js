@@ -9,12 +9,13 @@ const typeDefs = gql `
     }
 
     type Query {
-        post(username: String): [Post]
+        posts(username: String): [Post]
         post(_id: ID!): Post
     }
 
     type Mutation {
-        addPost(postTitle: String!, postText: String!): Post
+        addPost(postTitle: String!, postText: String!, username: String!): Post
+        removePost(_id: ID!): Post
     }
 `;
 

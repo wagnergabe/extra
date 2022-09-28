@@ -1,4 +1,3 @@
-const { AutheticationError } = require('apollo-server-express');
 const { Post } = require('../models');
 
 const resolvers = {
@@ -19,15 +18,25 @@ const resolvers = {
 
                 await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $push: { thoughts: thought._id } },
+                    { $push: { posts: post._id } },
                     { new: true }
                 );
 
-                return thought;
+                return post;
             }
-
-            throw new AutheticationError('You need to be logged in to post.');
         },
-        
+        removePost: async (parent, { _id }, context) => {
+            if (context.user) {
+                const updatedPost = await Post.findOneAndUpdate(
+                    { _id: context.post._id },
+                    { $pull: { posts: { postId: _id } } },
+                    { new: true }
+                );
+
+                return updatedPost;
+            }
+        }
     }
 }
+
+module.exports = resolvers;
