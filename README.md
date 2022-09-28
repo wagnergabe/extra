@@ -2,6 +2,6 @@ Group Challenge 3
 
 Shane Dinh
 Tricia Nghiem
-Anusha Rachamadugu
+Anusha
 Zee Virola
 Gabriel Wagner
