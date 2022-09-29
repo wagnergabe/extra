@@ -24,7 +24,6 @@ const getTrip = async (req, res) => {
         return res.status(404).json({error: "No trip found"});
     }
     res.status(200).json(trip)
-
 }
 
 //create trip
@@ -40,11 +39,46 @@ try {
 }
 
 //delete trip
+const deleteTrip = async (req, res) => {
+    const { id } = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'no trip found'})
+    }
+
+    const trip = await Trip.findOneAndDelete({_id: id})
+
+    if (!trip) {
+        return res.status(404).json({error: "No trip found"});
+    }
+
+    res.status(200).json(trip)
+}
 
 //update trip
+const updateTrip = async (req, res) => {
+    const { id } = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'no trip found'})
+    }
+
+    const trip = await Trip.findOneAndUpdate({_id: id}, {
+        //spread all properties of object
+        ...req.body
+    })
+
+    if(!trip) {
+        return res.status(400).json({error: 'No trip found'})
+    }
+
+    res.status(200).json(trip)
+}
 
 module.exports = {
     getTrips,
     getTrip,
-    createTrip
+    createTrip,
+    deleteTrip,
+    updateTrip
 }

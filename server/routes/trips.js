@@ -1,5 +1,9 @@
 const express = require('express')
-const { createTrip, getTrips, getTrip } = require('../controllers/tripController')
+const { createTrip, 
+        getTrips,
+        getTrip,
+        deleteTrip,
+        updateTrip } = require('../controllers/tripController')
 
 const router = express.Router()
 
@@ -13,13 +17,9 @@ router.get('/:id', getTrip)
 router.post('/', createTrip) 
 
 //delete a trip
-router.delete('/:id', (req, res) => {
-    res.json({ mssg:' DELETE a trip'})
-})
+router.delete('/:id', deleteTrip)
 
 // UPDATE a trip
-router.put('/:id', (req, res) => {
-    res.json({ mssg:' UPDATE a new trip'})
-})
+router.put('/:id', updateTrip)
 
 module.exports = router
