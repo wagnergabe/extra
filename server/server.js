@@ -1,6 +1,8 @@
 const express = require ('express');
 require('dotenv').config()
 
+const tripRoutes = require('./routes/trips');
+
 // express app
 const app = express();
 
@@ -11,10 +13,7 @@ next()
 })
 
 //routes
-app.get('/', (req,res) => {
-    res.json({mssg: "test"})
-})
-
+app.use('/api/trips', tripRoutes)
 
 //PORT 
 app.listen(process.env.PORT, () => {
