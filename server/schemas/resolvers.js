@@ -25,7 +25,6 @@ const resolvers = {
       
               return trip;
             }
-
     }
   }
 };
