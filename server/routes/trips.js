@@ -1,29 +1,16 @@
 const express = require('express')
-const Trip = require('../models/trips')
+const { createTrip, getTrips, getTrip } = require('../controllers/tripController')
 
 const router = express.Router()
 
 //GET all trips
-router.get('/', (req, res) => {
-    res.json({mssg: 'Get all trips'})
-});
+router.get('/', getTrips)
 
 //Get a single trip
-router.get('/:id', (req, res) => {
-    res.json({mssg: 'GET a single trip'})
-})
+router.get('/:id', getTrip)
 
 //Create a trip (This is where API comes in I believe)
-router.post('/', async (req, res) => {
-    const {title, location, date} = req.body
-
-    try {
-        const trip = await Trip.create({title, location, date})
-        res.status(200).json(trip)
-    } catch (error) {
-        res.status(400).json({error: error.message})
-    }
-})
+router.post('/', createTrip) 
 
 //delete a trip
 router.delete('/:id', (req, res) => {
