@@ -3,15 +3,31 @@ const {User, Trip } = require('../models');
 
 const resolvers = {
     Query: {
-        async getTrips() {
-            try{
-                const trips = await Trip.find();
-                return trips;
-            } catch (err) {
-                throw new Error(err);
+        trips: async (parent, { username }) => {
+            const params = username ? { username } : {};
+            return Trip.find(params).sort({ createdAt: -1 });
+          },
+          trip: async (parent, { _id }) => {
+            return Trip.findOne({ _id });
+          }
+    },
+
+    Mutation: {
+        createTrip: async (parent, args, context) => {
+            if (context.user) {
+              const trip = await Trip.create({ ...args, username: context.user.username });
+      
+              await User.findByIdAndUpdate(
+                { _id: context.user._id },
+                { $push: { trips: trip._id } },
+                { new: true }
+              );
+      
+              return trip;
             }
-        }
+
     }
+  }
 };
 
 module.exports = resolvers;
