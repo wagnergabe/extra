@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
 // components
-import TripInfo from '../components/TripInfo'
+import TripInfo from '../components/TripInfo';
+import TripForm from "../components/TripForm";
 
 const Home = () => {
     const [trips, setTrips] = useState(null)
@@ -21,10 +22,12 @@ const Home = () => {
 
     return (
         <div className="home">
-            <div className="trips"></div>
+            <div className="trips">
             {trips && trips.map((trip) => (
                 <TripInfo key = {trip._id} trip ={trip} />
             ))}
+        </div>
+        <TripForm />
         </div>
     )
 }
