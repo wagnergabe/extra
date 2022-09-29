@@ -1,12 +1,15 @@
 const express = require ('express');
 const tripRoutes = require('./routes/trips');
-const mongoose = require('mongoose');
 const { ApolloServer } = require('apollo-server-express');
 
 const {typeDefs, resolvers} = require('./schemas');
 const db = require('./config/connection');
 
-
+const PORT = process.env.PORT || 3001;
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+})
 
 require('dotenv').config()
 
@@ -14,15 +17,30 @@ require('dotenv').config()
 // express app
 const app = express();
 
-//middleware
-app.use(express.json())
+app.use(express.urlencoded({ extended: false}));
+app.use(express.json());
 
+// Serve up static assets
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../client/build')));
+  }
+  
+  app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  });
+  
 
-app.use((req, res, next) => {
-console.log(req.path, req.method)
-next()
-})
+// Create a new instance of an Apollo server with the GraphQL schema
+const startApolloServer = async (typeDefs, resolvers) => {
+    await server.start();
+  
+    db.once('open', () => {
+      app.listen(PORT, () => {
+        console.log(`API server running on port ${PORT}!`);
+        console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+      })
+    })
+    };
 
-//routes
-app.use('/api/trips', tripRoutes)
+    startApolloServer(typeDefs, resolvers);
 
