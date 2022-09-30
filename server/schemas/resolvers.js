@@ -40,6 +40,20 @@ const resolvers = {
         return updatedPost;
       }
     },
+    editPost: async (parent, args, context) => {
+      if (context.user) {
+
+        const updatedPost = await Post.findOneAndUpdate({ 
+          ...args,
+          username: context.user.username},
+          { _id: context.post._id },
+          { $push: { posts: { postId: _id } } },
+          { new: true }
+        );
+
+        return updatedPost;
+      }
+    }
   },
 };
 
