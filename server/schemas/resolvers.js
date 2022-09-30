@@ -10,7 +10,10 @@ const resolvers = {
     post: async (parent, { _id }) => {
       return Post.findOneAndUpdate({ _id });
     },
-    tag: async (parent, args, context) => {},
+    tag: async (parent, { tagId }) => {
+      const params = tagId ? { tagId } : {};
+      return Post.find({ params });
+    },
   },
 
   Mutation: {
