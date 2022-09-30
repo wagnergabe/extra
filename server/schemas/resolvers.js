@@ -1,3 +1,4 @@
+const { createPromptModule } = require("inquirer");
 const { Post } = require("../models");
 
 const resolvers = {
@@ -9,7 +10,10 @@ const resolvers = {
     post: async (parent, { _id }) => {
       return Post.findOneAndUpdate({ _id });
     },
-    tag: async (parent, args, context) => {},
+    tag: async (parent, { tagId }) => {
+      const params = tagId ? { tagId } : {};
+      return Post.find({ params });
+    },
   },
 
   Mutation: {
@@ -28,6 +32,8 @@ const resolvers = {
 
         return post;
       }
+
+      throw new AuthenticationError("You need to be loggeed in");
     },
     removePost: async (parent, { _id }, context) => {
       if (context.user) {
@@ -48,12 +54,37 @@ const resolvers = {
           username: context.user.username},
           { _id: context.post._id },
           { $push: { posts: { postId: _id } } },
+
+        );
+          return editPost;
+        }
+    },
+    addTag: async (parent, { postId, category, location }) => {
+      if (context.post) {
+        const updatedPost = await Post.findOneAndUpdate(
+          { _id: postId },
+          {
+            $push: {
+              tags: { category, location },
+            },
+          },
           { new: true }
         );
 
         return updatedPost;
       }
-    }
+    },
+    removeTag: async (parent, { tagId }, context) => {
+      if (context.post) {
+        const updatedPost = await Post.findOneAndUpdate(
+          { _id: tagId },
+          { $pull: { tags: { tagId: tagId } } },
+          { new: true }
+        );
+
+        return updatedPost;
+      }
+    },
   },
 };
 
