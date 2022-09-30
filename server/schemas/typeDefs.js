@@ -26,11 +26,16 @@ const typeDefs = gql`
     type Query {
         posts(username: String): [Post]
         post(_id: ID!): Post
+        post_comments(post: Post): [Comment]
+        user_comments(user: User): [Comment]
+        comment(_id: ID!): Comment
     }
 
     type Mutation {
         addPost(postTitle: String!, postText: String!, username: String!): Post
         removePost(_id: ID!): Post
+        addComment(commentContent: String!, commentUser: User!, commentPost: Post!): Comment
+        removeComment(_id: ID!): Comment
     }
 `;
 
