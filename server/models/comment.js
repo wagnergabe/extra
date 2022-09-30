@@ -1,44 +1,31 @@
 const { Schema, model } = require("mongoose");
 
-const userSchema = new Schema(
+const commentSchema = new Schema(
   {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
     commentContent: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
+      type: String,
+      required: "comment cannot be empty!",
+      minlength: 1,
+      maxlength: 500,
     },
-    dateCreated: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
+    commentDate: {
+      type: Date,
+      required: "comment needs date stamp!",
+      default: Date.now,
     },
-    userId: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "user",
-        key: "id",
-      },
+    commentUser: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
     },
-    postId: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "post",
-        key: "id",
-      },
+    commentPost: {
+      type: Schema.Types.ObjectId,
+      ref: "Post",
     },
   },
   {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: "comment",
+    toJSON: {
+      getters: true,
+    },
   }
 );
 
