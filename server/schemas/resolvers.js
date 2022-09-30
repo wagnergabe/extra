@@ -58,6 +58,17 @@ const resolvers = {
         return updatedPost;
       }
     },
+    removeTag: async (parent, { tagId }, context) => {
+      if (context.post) {
+        const updatedPost = await Post.findOneAndUpdate(
+          { _id: tagId },
+          { $pull: { tags: { tagId: tagId } } },
+          { new: true }
+        );
+
+        return updatedPost;
+      }
+    },
   },
 };
 
