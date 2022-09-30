@@ -1,25 +1,25 @@
-// const express = require('express')
-// const { createTrip, 
-//         getTrips,
-//         getTrip,
-//         deleteTrip,
-//         updateTrip } = require('../controllers/tripController')
+const express = require('express')
+const { createTrip, 
+        getTrips,
+        getTrip,
+        deleteTrip,
+        updateTrip } = require('../controllers/tripController')
 
-// const router = express.Router()
+const router = express.Router()
 
-// //GET all trips
-// router.get('/', getTrips)
+//GET all trips
+router.get('/', getTrips)
 
-// //Get a single trip
-// router.get('/:id', getTrip)
+//Get a single trip
+router.get('/:id', getTrip)
 
-// //Create a trip (This is where API comes in I believe)
-// router.post('/', createTrip) 
+//Create a trip (This is where API comes in I believe)
+router.post('/', createTrip) 
 
-// //delete a trip
-// router.delete('/:id', deleteTrip)
+//delete a trip
+router.delete('/:id', deleteTrip)
 
-// // UPDATE a trip
-// router.put('/:id', updateTrip)
+// UPDATE a trip
+router.put('/:id', updateTrip)
 
-// module.exports = router
+module.exports = router

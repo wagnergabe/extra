@@ -1,84 +1,85 @@
-// const Trip = require('../models/Trip');
-// const mongoose = require('mongoose')
 
-// //get all trips
+const Trip = require('../models/trips');
+const mongoose = require('mongoose')
 
-// const getTrips = async (req, res) => {
-//     const trips = await Trip.find({})
+//get all trips
 
-//     res.status(200).json(trips)
-// }
+const getTrips = async (req, res) => {
+    const trips = await Trip.find({})
 
-// //get a single trip
-// const getTrip = async (req, res) => {
-//     const { id } = req.params
+    res.status(200).json(trips)
+}
 
-//     //keeps internal errors from crashing app
-//     if (!mongoose.Types.ObjectId.isValid(id)) {
-//         return res.status(404).json({error: 'no trip found'})
-//     }
+//get a single trip
+const getTrip = async (req, res) => {
+    const { id } = req.params
 
-//     const trip = await Trip.findById(id)
+    //keeps internal errors from crashing app
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'no trip found'})
+    }
+
+    const trip = await Trip.findById(id)
     
-//     if (!trip) {
-//         return res.status(404).json({error: "No trip found"});
-//     }
-//     res.status(200).json(trip)
-// }
+    if (!trip) {
+        return res.status(404).json({error: "No trip found"});
+    }
+    res.status(200).json(trip)
+}
 
-// //create trip
-// const createTrip = async (req, res) => {
-//     const {title, location, date} = req.body
+//create trip
+const createTrip = async (req, res) => {
+    const {title, location, date} = req.body
 
-// try {
-//     const trip = await Trip.create({title, location, date})
-//     res.status(200).json(trip)
-// } catch (error) {
-//     res.status(400).json({error: error.message})
-// }
-// }
+try {
+    const trip = await Trip.create({title, location, date})
+    res.status(200).json(trip)
+} catch (error) {
+    res.status(400).json({error: error.message})
+}
+}
 
-// //delete trip
-// const deleteTrip = async (req, res) => {
-//     const { id } = req.params
+//delete trip
+const deleteTrip = async (req, res) => {
+    const { id } = req.params
 
-//     if (!mongoose.Types.ObjectId.isValid(id)) {
-//         return res.status(404).json({error: 'no trip found'})
-//     }
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'no trip found'})
+    }
 
-//     const trip = await Trip.findOneAndDelete({_id: id})
+    const trip = await Trip.findOneAndDelete({_id: id})
 
-//     if (!trip) {
-//         return res.status(404).json({error: "No trip found"});
-//     }
+    if (!trip) {
+        return res.status(404).json({error: "No trip found"});
+    }
 
-//     res.status(200).json(trip)
-// }
+    res.status(200).json(trip)
+}
 
-// //update trip
-// const updateTrip = async (req, res) => {
-//     const { id } = req.params
+//update trip
+const updateTrip = async (req, res) => {
+    const { id } = req.params
 
-//     if (!mongoose.Types.ObjectId.isValid(id)) {
-//         return res.status(404).json({error: 'no trip found'})
-//     }
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'no trip found'})
+    }
 
-//     const trip = await Trip.findOneAndUpdate({_id: id}, {
-//         //spread all properties of object
-//         ...req.body
-//     })
+    const trip = await Trip.findOneAndUpdate({_id: id}, {
+        //spread all properties of object
+        ...req.body
+    })
 
-//     if(!trip) {
-//         return res.status(400).json({error: 'No trip found'})
-//     }
+    if(!trip) {
+        return res.status(400).json({error: 'No trip found'})
+    }
 
-//     res.status(200).json(trip)
-// }
+    res.status(200).json(trip)
+}
 
-// module.exports = {
-//     getTrips,
-//     getTrip,
-//     createTrip,
-//     deleteTrip,
-//     updateTrip
-// }
+module.exports = {
+    getTrips,
+    getTrip,
+    createTrip,
+    deleteTrip,
+    updateTrip
+}
