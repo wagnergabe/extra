@@ -1,3 +1,4 @@
+const { createPromptModule } = require("inquirer");
 const { Post } = require("../models");
 
 const resolvers = {
@@ -34,6 +35,21 @@ const resolvers = {
         const updatedPost = await Post.findOneAndUpdate(
           { _id: context.post._id },
           { $pull: { posts: { postId: _id } } },
+          { new: true }
+        );
+
+        return updatedPost;
+      }
+    },
+    addTag: async (parent, { postId, category, location }) => {
+      if (context.user) {
+        const updatedPost = await Post.findOneAndUpdate(
+          { _id: postId },
+          {
+            $push: {
+              tags: { category, location },
+            },
+          },
           { new: true }
         );
 
