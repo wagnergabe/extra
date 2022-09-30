@@ -29,6 +29,8 @@ const resolvers = {
 
         return post;
       }
+
+      throw new AuthenticationError("You need to be loggeed in");
     },
     removePost: async (parent, { _id }, context) => {
       if (context.user) {
@@ -42,7 +44,7 @@ const resolvers = {
       }
     },
     addTag: async (parent, { postId, category, location }) => {
-      if (context.user) {
+      if (context.post) {
         const updatedPost = await Post.findOneAndUpdate(
           { _id: postId },
           {
