@@ -38,6 +38,7 @@ type Auth {
     post(_id: ID!): Post
     tags: [Tag]
     tag(_id: ID!): Tag
+    user: User
   }
 
   type Mutation {
