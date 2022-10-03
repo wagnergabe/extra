@@ -19,6 +19,7 @@ export const REMOVE_POST = gql`
       postTitle
       postText
       username
+      tags
     }
   }
 `;
@@ -28,12 +29,19 @@ export const EDIT_POST = gql`
     $postTitle: String!
     $postText: String!
     $username: String!
+    $tags: String!
   ) {
-    editPost(postTitle: $postTitle, postText: $postText, username: $username) {
+    editPost(
+      postTitle: $postTitle
+      postText: $postText
+      username: $username
+      tags: $tags
+    ) {
       _id
       postTitle
       postText
       username
+      tags
     }
   }
 `;

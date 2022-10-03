@@ -33,3 +33,13 @@ export const QUERY_POST = gql`
     }
   }
 `;
+
+export const QUERY_TAGGED_POSTS = gql`
+  query taggedPosts($tags: String!) {
+    taggedPosts(tags: $tags) {
+      _id
+      postTitle
+      postText
+      username
+      tags
+`;
