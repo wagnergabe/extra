@@ -2,6 +2,7 @@
 const { AuthenticationError} =require('apollo-server-express');
 const { createPromptModule } = require("inquirer");
 const { Post } = require("../models");
+const { signToken} re
 
 const resolvers = {
   Query: {
