@@ -6,7 +6,11 @@ type User {
   username:String
   email: String
   }
-
+type Auth {
+  token: ID!
+  user: User
+  }
+  
   
 
 
@@ -42,6 +46,8 @@ type User {
     editPost(postTitle: String!, postText: String!, _id: ID!, username: String!): Post
     addTag(input: TagInput): Post
     removeTag(tagId: ID!): Post
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
   }
 `;
 
