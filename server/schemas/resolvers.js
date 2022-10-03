@@ -1,3 +1,5 @@
+//will handle errors like user trying to log in with wrong username/password
+const { AuthenticationError} =require('apollo-server-express');
 const { createPromptModule } = require("inquirer");
 const { Post } = require("../models");
 
