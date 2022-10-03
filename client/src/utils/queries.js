@@ -1,5 +1,15 @@
 import { gql } from "@apollo/client";
 
+export const QUERY_ME = gql`
+  {
+    me {
+      _id
+      username
+      email
+    }
+  }
+`;
+
 export const QUERY_POSTS = gql`
   query posts($username: String!) {
     posts(username: $username) {
@@ -7,6 +17,11 @@ export const QUERY_POSTS = gql`
       postTitle
       postText
       username
+      tags {
+        _id
+        category
+        location
+      }
     }
   }
 `;
@@ -18,6 +33,11 @@ export const QUERY_POST = gql`
       postTitle
       postText
       username
+      tags {
+        _id
+        category
+        location
+      }
     }
   }
 `;

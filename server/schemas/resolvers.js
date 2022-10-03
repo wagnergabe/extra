@@ -1,4 +1,4 @@
-const { createPromptModule } = require("inquirer");
+// const { createPromptModule } = require("inquirer");
 const { Post } = require("../models");
 
 const resolvers = {
