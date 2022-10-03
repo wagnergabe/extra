@@ -40,13 +40,17 @@ class AuthService {
     login(idToken) {
         //save token to localstorage
         localStorage.setItem('id_token', idToken);
-          //will assign path and give you keep history
+          //will assign path and give you keep history for login
           window.location.assign('/');
     }
 
-
-
-    //  //will assign path and give you keep history
-
+    logout() {
+        //clear user and profile from localstorage
+        localStorage.removeItem('id_token');
+        //will reload the page and rest the state of the application
+         window.location.assign('/');
+    }
 
 }
+
+export default new AuthService();
