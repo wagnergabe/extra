@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const tagSchema = require("./Tag");
 
 const postSchema = new Schema(
   {
