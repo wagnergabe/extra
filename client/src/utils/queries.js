@@ -29,7 +29,7 @@ export const QUERY_TAG = gql`
       category
       location
       posts {
-        _id: ID
+        _id
         postTitle
         postText
         username
