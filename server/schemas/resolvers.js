@@ -1,5 +1,8 @@
+//will handle errors like user trying to log in with wrong username/password
+const { AuthenticationError} =require('apollo-server-express');
 const { createPromptModule } = require("inquirer");
-const { Post } = require("../models");
+const { Post, User } = require("../models");
+const { signToken} = require('../utils/auth');
 
 const resolvers = {
   Query: {
@@ -13,6 +16,11 @@ const resolvers = {
     tag: async (parent, { tagId }) => {
       const params = tagId ? { tagId } : {};
       return Post.find({ params });
+    },
+    //get a user by username
+    user: async (parent, {username}) => {
+      return User.findOne({username})
+      .select('__v -password');
     },
   },
 
@@ -85,6 +93,28 @@ const resolvers = {
         return updatedPost;
       }
     },
+
+    // login info 
+    addUser: async (parent, args) => {
+      const user = await User.create(args);
+      const token = signToken(user);
+      return {token, user};
+    },
+    login: async (parent, {email, password}) => {
+      const user = await User.findOne({email});
+      if (!user) {
+        throw new AuthenticationError('incorrect credentials');
+      }
+      const correctPw = await user.isCorrectPassword (password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('incorrect credentials');
+      }
+
+      const token = signToken(user);
+      return {token, user};
+    }
+
   },
 };
 

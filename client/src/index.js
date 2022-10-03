@@ -10,3 +10,7 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+/*for work offline maybe
+serviceWorker.register();
+*/
