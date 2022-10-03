@@ -17,6 +17,11 @@ const resolvers = {
       const params = tagId ? { tagId } : {};
       return Post.find({ params });
     },
+    //get a user by username
+    user: async (parent, {username}) => {
+      return User.findOne({username})
+      .select('__v -password');
+    },
   },
 
   Mutation: {
