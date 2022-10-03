@@ -31,7 +31,14 @@ class AuthService {
         }
     }
 
-    //
+    getToken() {
+        //retriving token from localStorage
+        return localStorage.getItem('id_token', idToken);
+    }
+
+
+
+    //  //will assign path and give you keep history
 
 
 }
