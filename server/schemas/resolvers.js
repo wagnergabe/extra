@@ -1,8 +1,8 @@
 //will handle errors like user trying to log in with wrong username/password
 const { AuthenticationError} =require('apollo-server-express');
 const { createPromptModule } = require("inquirer");
-const { Post } = require("../models");
-const { signToken} re
+const { Post, User } = require("../models");
+const { signToken} = require('../utils/auth');
 
 const resolvers = {
   Query: {
@@ -88,6 +88,15 @@ const resolvers = {
         return updatedPost;
       }
     },
+
+    // login info 
+    addUser: async (parent, args) => {
+      const user = await User.create(args);
+      const token = signToken(user);
+      return {token, user};
+
+    }
+
   },
 };
 
