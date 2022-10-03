@@ -37,6 +37,14 @@ class AuthService {
     }
 
 
+    login(idToken) {
+        //save token to localstorage
+        localStorage.setItem('id_token', idToken);
+          //will assign path and give you keep history
+          window.location.assign('/');
+    }
+
+
 
     //  //will assign path and give you keep history
 
