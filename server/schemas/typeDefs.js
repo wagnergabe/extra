@@ -30,6 +30,7 @@ const typeDefs = gql`
   type Mutation {
     addPost(postTitle: String!, postText: String!, username: String!): Post
     removePost(_id: ID!): Post
+    editPost(postTitle: String!, postText: String!, _id: ID!, username: String!): Post
     addTag(input: TagInput): Post
     removeTag(tagId: ID!): Post
   }
