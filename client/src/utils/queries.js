@@ -17,11 +17,7 @@ export const QUERY_POSTS = gql`
       postTitle
       postText
       username
-      tags {
-        _id
-        category
-        location
-      }
+      tags
     }
   }
 `;
@@ -33,28 +29,7 @@ export const QUERY_POST = gql`
       postTitle
       postText
       username
-      tags {
-        _id
-        category
-        location
-      }
-    }
-  }
-`;
-
-export const QUERY_TAG = gql`
-  query tag($tagId: ID!) {
-    tag(_id: $id) {
-      _id
-      category
-      location
-      posts {
-        _id
-        postTitle
-        postText
-        username
-        tags
-      }
+      tags
     }
   }
 `;

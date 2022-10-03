@@ -1,16 +1,13 @@
 import { gql } from "@apollo/client";
 
 export const ADD_POST = gql`
-  mutation addPost(
-    $postTitle: String!
-    $postText: String!
-    $username: String!
-  ) {
-    addPost(postTitle: $postTitle, postText: $postText, username: $username) {
+  mutation addPost($postTitle: String!, $postText: String!, $tags: String!) {
+    addPost(postTitle: $postTitle, postText: $postText, tags: $tags) {
       _id
       postTitle
       postText
       username
+      tags
     }
   }
 `;
@@ -39,35 +36,4 @@ export const EDIT_POST = gql`
       username
     }
   }
-`;
-
-export const ADD_TAG = gql`
-  mutation addTag($input: TagInput!) {
-    addTag(input: $input) {
-      _id
-      postTitle
-      postText
-      username
-      tags {
-        _id
-        category
-        location
-      }
-    }
-  }
-`;
-
-export const REMOVE_TAG = gql`
-  mutation removeTag($_id: ID!) {
-    removeTag(_id: $_id) {
-        _id
-        postTitle
-        postText
-        username
-        tags {
-          _id
-          category
-          location
-        }
-    }
 `;

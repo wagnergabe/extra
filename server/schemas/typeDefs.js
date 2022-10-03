@@ -17,18 +17,7 @@ const typeDefs = gql`
     postTitle: String
     postText: String
     username: String
-    tags: [Tag]
-  }
-
-  input TagInput {
-    category: String
-    location: String
-  }
-
-  type Tag {
-    _id: ID
-    category: String
-    location: String
+    tags: String
   }
 
   type Query {
@@ -36,15 +25,24 @@ const typeDefs = gql`
     user(username: String!): User
     posts(username: String): [Post]
     post(_id: ID!): Post
-    tags: [Tag]
-    tag(_id: ID!): Tag
+    taggedPosts(tags: String): [Post]
   }
 
   type Mutation {
-    addPost(postTitle: String!, postText: String!, username: String!): Post
+    addPost(
+      postTitle: String!
+      postText: String!
+      username: String!
+      tags: String!
+    ): Post
     removePost(_id: ID!): Post
-    addTag(input: TagInput): Post
-    removeTag(tagId: ID!): Post
+    editPost(
+      postTitle: String!
+      postText: String!
+      _id: ID!
+      username: String!
+      tags: String!
+    ): Post
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
   }

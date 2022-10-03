@@ -19,12 +19,16 @@ const resolvers = {
       return Post.find(params);
     },
     post: async (parent, { _id }) => {
-      return Post.findOneAndUpdate({ _id });
+      return Post.findOne({ _id });
     },
-    tag: async (parent, { tagId }) => {
-      const params = tagId ? { tagId } : {};
-      return Post.find({ params });
+    taggedPosts: async (parent, { tags }) => {
+      const params = tags ? { tags } : {};
+      return Post.find(params);
     },
+    // tag: async (parent, { tagId }) => {
+    //   const params = tagId ? { tagId } : {};
+    //   return Post.find({ params });
+    // },
     //get a user by username
     user: async (parent, { username }) => {
       return User.findOne({ username }).select("__v -password");
@@ -74,32 +78,32 @@ const resolvers = {
         return editPost;
       }
     },
-    addTag: async (parent, { postId, category, location }) => {
-      if (context.post) {
-        const updatedPost = await Post.findOneAndUpdate(
-          { _id: postId },
-          {
-            $push: {
-              tags: { category, location },
-            },
-          },
-          { new: true }
-        );
+    // addTag: async (parent, { input }, context) => {
+    //   if (context.post) {
+    //     const updatedPost = await Post.findOneAndUpdate(
+    //       { _id: context.post._id },
+    //       {
+    //         $push: {
+    //           tags: { input },
+    //         },
+    //       },
+    //       { new: true }
+    //     );
 
-        return updatedPost;
-      }
-    },
-    removeTag: async (parent, { tagId }, context) => {
-      if (context.post) {
-        const updatedPost = await Post.findOneAndUpdate(
-          { _id: tagId },
-          { $pull: { tags: { tagId: tagId } } },
-          { new: true }
-        );
+    //     return updatedPost;
+    //   }
+    // },
+    // removeTag: async (parent, { tagId }, context) => {
+    //   if (context.post) {
+    //     const updatedPost = await Post.findOneAndUpdate(
+    //       { _id: tagId },
+    //       { $pull: { tags: { tagId: tagId } } },
+    //       { new: true }
+    //     );
 
-        return updatedPost;
-      }
-    },
+    //     return updatedPost;
+    //   }
+    // },
     // login info
     addUser: async (parent, args) => {
       const user = await User.create(args);
