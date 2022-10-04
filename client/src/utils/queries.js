@@ -6,9 +6,31 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      posts {
+        _id
+        postTitle
+        postText
+        username
+        tags
+      }
     }
   }
 `;
+
+export const QUERY_USER = gql`
+  query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      email
+      posts {
+        _id
+        postTitle
+        postText
+        username
+        tags
+      }
+  }`;
 
 export const QUERY_POSTS = gql`
   query posts($username: String!) {

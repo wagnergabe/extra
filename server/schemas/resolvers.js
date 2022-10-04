@@ -25,11 +25,7 @@ const resolvers = {
       const params = tags ? { tags } : {};
       return Post.find(params);
     },
-    // tag: async (parent, { tagId }) => {
-    //   const params = tagId ? { tagId } : {};
-    //   return Post.find({ params });
-    // },
-    //get a user by username
+    // get a user by username
     user: async (parent, { username }) => {
       return User.findOne({ username }).select("__v -password");
     },
@@ -75,35 +71,9 @@ const resolvers = {
           { _id: context.post._id },
           { $push: { posts: { postId: _id } } }
         );
-        return editPost;
+        return updatedPost;
       }
     },
-    // addTag: async (parent, { input }, context) => {
-    //   if (context.post) {
-    //     const updatedPost = await Post.findOneAndUpdate(
-    //       { _id: context.post._id },
-    //       {
-    //         $push: {
-    //           tags: { input },
-    //         },
-    //       },
-    //       { new: true }
-    //     );
-
-    //     return updatedPost;
-    //   }
-    // },
-    // removeTag: async (parent, { tagId }, context) => {
-    //   if (context.post) {
-    //     const updatedPost = await Post.findOneAndUpdate(
-    //       { _id: tagId },
-    //       { $pull: { tags: { tagId: tagId } } },
-    //       { new: true }
-    //     );
-
-    //     return updatedPost;
-    //   }
-    // },
     // login info
     addUser: async (parent, args) => {
       const user = await User.create(args);
