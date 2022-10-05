@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Nav = () => {
   return (
     <div>
-      <nav class="flex items-center justify-between flex-wrap bg-green-500 p-6">
+      <nav class="flex items-center justify-between flex-wrap bg-black p-6">
         <div class="flex items-center flex-shrink-0 text-white mr-6">
           <svg
             class="fill-current h-8 w-8 mr-2"
