@@ -1,4 +1,3 @@
-
 const { Schema, model } = require('mongoose');
 
 const postSchema = new Schema(
@@ -19,6 +18,16 @@ const postSchema = new Schema(
       required: true
     },
     },
+
+   
+    {
+    
+    tags: {
+      type: String,
+      required: `Tag your post so people can find it!`,
+      minlength: 1,
+    },
+  },
   {
     toJSON: {
       getters: true
