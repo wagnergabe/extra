@@ -7,6 +7,7 @@ import { ADD_POST } from '../../utils/mutations';
 import { QUERY_POSTS, QUERY_ME } from '../../utils/queries';
 
 const PostForm = () => {
+    
     const [postTitle, setTitle] = useState('');
     const [postText, setText] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
@@ -39,7 +40,7 @@ const PostForm = () => {
         }
     };
 
-    const handleFormSubmit = async (event) => {
+     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
         try {
@@ -56,33 +57,44 @@ const PostForm = () => {
     };
 
     return (
-        <div>
+        <div className='modalBackdrop w-full max-w-xs'>
+            <div className="modalContainer">
+                <h3 className="modalTitle">Create A New Post</h3>
+             <form
+                className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'
+                onSubmit={handleFormSubmit}
+            >
+                <div class='mb-4'>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="post-title">
+        Post Title
+      </label>
+                <textarea
+                    placeholder="Title"
+                    value={postTitle}
+                    className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                    onChange={handleChange}
+                ></textarea>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="post-body">
+        Post:
+      </label>
+                <textarea
+                    placeholder="Post Text"
+                    value={postText}
+                    className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
+                    onChange={handleChange}
+                ></textarea>
+                <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' type='submit'>
+                    Submit!
+                </button>
+                </div>
+            </form>     
             <p
             className={`m-0 ${characterCount === 500000 || error ? 'text-error' : ''}`}
             >
                 Character Count: {characterCount}/500000
                 {error && <span className="ml-2">Something's awry...</span>}
             </p>
-            <form
-                className='flex-row justify-center justify-space-between-md align-stretch'
-                onSubmit={handleFormSubmit}
-            >
-                <textarea
-                    placeholder="Title"
-                    value={postTitle}
-                    className='form-input col-12 col-md-9'
-                    onChange={handleChange}
-                ></textarea>
-                <textarea
-                    placeholder="Post Text"
-                    value={postText}
-                    className='form-input col-12 col-md-9'
-                    onChange={handleChange}
-                ></textarea>
-                <button className='btn col-12 col-md-3' type='submit'>
-                    Submit!
-                </button>
-            </form>    
+        </div>
         </div>
     );
 };

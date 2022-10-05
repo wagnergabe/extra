@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useState, Component } from 'react';
 import { Link } from 'react-router-dom';
+import PostForm from '../components/PostForm/PostForm';
 
 const PostList = ({ posts, postTitle }) => {
-    if (!posts.length) {
+    /* if (!posts.length) {
         return <h3>No Posts Yet... Be The First!</h3>; 
-    }
-
+    } */
+    
     return (
-        <div>
+        <div>            
             <h3>{postTitle}</h3>
             {posts &&
                 posts.map(post => (
@@ -25,6 +26,7 @@ const PostList = ({ posts, postTitle }) => {
                 ))}
         </div>
     )
+    
 };
 
 export default PostList;

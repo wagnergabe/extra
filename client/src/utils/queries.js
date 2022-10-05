@@ -1,8 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_ME = gql`
-  {
-    me {
+query me {
       _id
       username
       email
@@ -14,7 +13,6 @@ export const QUERY_ME = gql`
         tags
       }
     }
-  }
 `;
 
 export const QUERY_USER = gql`
@@ -30,7 +28,9 @@ export const QUERY_USER = gql`
         username
         tags
       }
-  }`;
+    }
+  }
+`;
 
 export const QUERY_POSTS = gql`
   query posts($username: String!) {
@@ -64,4 +64,6 @@ export const QUERY_TAGGED_POSTS = gql`
       postText
       username
       tags
+    }
+  }
 `;
