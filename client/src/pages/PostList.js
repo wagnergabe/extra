@@ -1,17 +1,13 @@
 import React, { useState, Component } from 'react';
 import { Link } from 'react-router-dom';
-import PostForm from '../components/PostForm/PostForm';
 
 const PostList = ({ posts, postTitle }) => {
-    /* if (!posts.length) {
-        return <h3>No Posts Yet... Be The First!</h3>; 
-    } */
 
     return (
         <div>
             
             <div className="dark:bg-gray-800 dark:text-gray-100">
-            <button className="fixed bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create A Post</button>
+            <a href="/form"><button className="fixed bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create A Post</button></a>
                 <div className="container max-w-4xl px-10 py-6 mx-auto rounded-lg shadow-sm dark:bg-gray-900">
                     <div className="flex items-center justify-between">
                         <a href="/" className="px-2 py-1 font-bold rounded dark:bg-violet-400 dark:text-gray-900">Tag #1</a>
