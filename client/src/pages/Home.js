@@ -20,7 +20,7 @@ const Home = () => {
             </div>
             <div class="flex flex-col items-center md:flex-row">
               <a
-                href="/"
+                href="#account"
                 class="inline-flex items-center justify-center w-full h-12 px-6 mb-3 font-medium rounded shadow-md md:w-auto md:mr-4 md:mb-0 text-gray-700"
               >
                 Get started
@@ -37,101 +37,116 @@ const Home = () => {
         </div>
       </div>
 
-      <div class="mx-20 grid grid-cols-2 gap-20 py-20">
-        <div class="bg-gray-100 p-5">
-          <p class="text-center">Create an Account</p>
-          <form>
-            <div class="mb-6">
-              <label
-                for="email"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >
-                Email Address
-              </label>
-              <input
-                type="email"
-                id="email"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              />
-            </div>
+      <div
+        id="account"
+        class="relative flex flex-col py-16 lg:pt-0 lg:flex-col lg:pb-0"
+      >
+        <div class="container mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 py-20">
+            <div class="bg-gray-500 p-6">
+              <div>
+                <p class="text-center">Create an Account</p>
+                <form>
+                  <div>
+                    <label
+                      for="email"
+                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    >
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    />
+                  </div>
 
-            <div class="mb-6">
-              <label
-                for="username"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >
-                Username
-              </label>
-              <input
-                type="email"
-                id="email"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              />
-            </div>
+                  <div>
+                    <label
+                      for="username"
+                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    >
+                      Username
+                    </label>
+                    <input
+                      type="username"
+                      id="username"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    />
+                  </div>
 
-            <div class="mb-6">
-              <label
-                for="password"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              />
-            </div>
+                  <div>
+                    <label
+                      for="password"
+                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    >
+                      Password
+                    </label>
+                    <input
+                      type="password"
+                      id="password"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    />
+                  </div>
 
-            <button
-              type="submit"
-              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Create an Account
-            </button>
-          </form>
-        </div>
-        <div class="mx-15 p-5">
-          <p class="text-center">
-            Already have an account?
-            <br></br>Login below.
-          </p>
-          <form>
-            <div class="mb-6">
-              <label
-                for="email"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >
-                Email Address
-              </label>
-              <input
-                type="email"
-                id="email"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              />
+                  <center>
+                    <button
+                      type="submit"
+                      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-2 my-5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >
+                      Create an Account
+                    </button>
+                  </center>
+                </form>
+              </div>
             </div>
+            <div class="bg-gray-100 p-6">
+              <div>
+                <p class="text-center">
+                  Already have an account with us?
+                  <br></br>Login Below:
+                </p>
+                <form>
+                  <div>
+                    <label
+                      for="email"
+                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    >
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    />
+                  </div>
 
-            <div class="mb-6">
-              <label
-                for="password"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              />
+                  <div>
+                    <label
+                      for="password"
+                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    >
+                      Password
+                    </label>
+                    <input
+                      type="password"
+                      id="password"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    />
+                  </div>
+
+                  <center>
+                    <button
+                      type="submit"
+                      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-20 py-2 my-5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >
+                      Sign In
+                    </button>
+                  </center>
+                </form>
+              </div>
             </div>
-
-            <button
-              type="submit"
-              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Sign In
-            </button>
-          </form>
+          </div>
         </div>
       </div>
     </div>
