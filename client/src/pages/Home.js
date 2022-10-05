@@ -5,25 +5,19 @@ const Home = () => {
         <div class="flex flex-col items-start w-full max-w-xl px-4 mx-auto lg:px-8 lg:max-w-screen-xl">
           <div class="mb-16 lg:my-40 lg:max-w-lg lg:pr-5">
             <div class="max-w-xl mb-6">
-              <div>
-                <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
-                  Let us help you
-                </p>
-              </div>
-
               <div class="animate">START YOUR NEXT ADVENTURE</div>
 
               <p class="text-base text-gray-700 md:text-lg">
-                Ready for your next trip? Find a flight, places to see, things
-                to do, and more!
+                Find a flight, discover places to see, things to do and more!
+                Let us and our community help you plan your next trip.
               </p>
             </div>
             <div class="flex flex-col items-center md:flex-row">
               <a
                 href="#account"
-                class="inline-flex items-center justify-center w-full h-12 px-6 mb-3 font-medium rounded shadow-md md:w-auto md:mr-4 md:mb-0 text-gray-700"
+                class="inline-flex items-center justify-center w-full h-12 px-6 mb-3 font-medium rounded shadow-md md:w-auto md:mr-4 md:mb-0 text-white bg-green-900"
               >
-                Get started
+                Let's Go
               </a>
             </div>
           </div>
@@ -39,13 +33,13 @@ const Home = () => {
 
       <div
         id="account"
-        class="relative flex flex-col py-16 lg:pt-0 lg:flex-col lg:pb-0"
+        class="relative flex flex-col py-8 lg:pt-0 lg:flex-col lg:pb-0 bg-gray-100"
       >
         <div class="container mx-auto">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 py-20">
-            <div class="bg-gray-500 p-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 py-10">
+            <div class="bg-green-600 p-6 rounded-md">
               <div>
-                <p class="text-center">Create an Account</p>
+                <p class="text-center text-xl">Create an Account</p>
                 <form>
                   <div>
                     <label
@@ -92,55 +86,55 @@ const Home = () => {
                   <center>
                     <button
                       type="submit"
-                      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-2 my-5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                      class="text-black bg-white hover:bg-gray-800 text-md rounded py-1 px-5 my-5"
                     >
-                      Create an Account
+                      Sign up
                     </button>
                   </center>
                 </form>
               </div>
             </div>
-            <div class="bg-gray-100 p-6">
+            <div class="p-6 rounded border-2 border-gray-400 border-dashed">
               <div>
-                <p class="text-center">
+                <p class="text-center text-green-900 text-xl">
                   Already have an account with us?
-                  <br></br>Login Below:
                 </p>
+
                 <form>
                   <div>
                     <label
                       for="email"
-                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      class="my-4 block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                     >
                       Email Address
                     </label>
                     <input
                       type="email"
                       id="email"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      class="my-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     />
                   </div>
 
                   <div>
                     <label
                       for="password"
-                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      class="my-4 block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                     >
                       Password
                     </label>
                     <input
                       type="password"
                       id="password"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      class="my-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     />
                   </div>
 
                   <center>
                     <button
                       type="submit"
-                      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-20 py-2 my-5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                      class="text-white bg-green-900 hover:bg-gray-800 text-md rounded py-1 px-10 my-5"
                     >
-                      Sign In
+                      Log In
                     </button>
                   </center>
                 </form>
