@@ -1,26 +1,33 @@
-//will handle errors like user trying to log in with wrong username/password
-const { AuthenticationError} =require('apollo-server-express');
-const { createPromptModule } = require("inquirer");
+// const { createPromptModule } = require("inquirer");
+const { AuthenticationError } = require("apollo-server-express");
 const { Post, User } = require("../models");
-const { signToken} = require('../utils/auth');
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
+    me: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({
+          _id: context.user._id,
+        }).select("-__v -password");
+
+        return userData;
+      }
+    },
     posts: async (parent, { username }) => {
       const params = username ? { username } : {};
       return Post.find(params);
     },
     post: async (parent, { _id }) => {
-      return Post.findOneAndUpdate({ _id });
+      return Post.findOne({ _id });
     },
-    tag: async (parent, { tagId }) => {
-      const params = tagId ? { tagId } : {};
-      return Post.find({ params });
+    taggedPosts: async (parent, { tags }) => {
+      const params = tags ? { tags } : {};
+      return Post.find(params);
     },
-    //get a user by username
-    user: async (parent, {username}) => {
-      return User.findOne({username})
-      .select('__v -password');
+    // get a user by username
+    user: async (parent, { username }) => {
+      return User.findOne({ username }).select("__v -password");
     },
   },
 
@@ -56,65 +63,37 @@ const resolvers = {
     },
     editPost: async (parent, args, context) => {
       if (context.user) {
-
-        const updatedPost = await Post.findOneAndUpdate({ 
-          ...args,
-          username: context.user.username},
-          { _id: context.post._id },
-          { $push: { posts: { postId: _id } } },
-
-        );
-          return editPost;
-        }
-    },
-    addTag: async (parent, { postId, category, location }) => {
-      if (context.post) {
         const updatedPost = await Post.findOneAndUpdate(
-          { _id: postId },
           {
-            $push: {
-              tags: { category, location },
-            },
+            ...args,
+            username: context.user.username,
           },
-          { new: true }
+          { _id: context.post._id },
+          { $push: { posts: { postId: _id } } }
         );
-
         return updatedPost;
       }
     },
-    removeTag: async (parent, { tagId }, context) => {
-      if (context.post) {
-        const updatedPost = await Post.findOneAndUpdate(
-          { _id: tagId },
-          { $pull: { tags: { tagId: tagId } } },
-          { new: true }
-        );
-
-        return updatedPost;
-      }
-    },
-
-    // login info 
+    // login info
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
-      return {token, user};
+      return { token, user };
     },
-    login: async (parent, {email, password}) => {
-      const user = await User.findOne({email});
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
       if (!user) {
-        throw new AuthenticationError('incorrect credentials');
+        throw new AuthenticationError("incorrect credentials");
       }
-      const correctPw = await user.isCorrectPassword (password);
+      const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError('incorrect credentials');
+        throw new AuthenticationError("incorrect credentials");
       }
 
       const token = signToken(user);
-      return {token, user};
-    }
-
+      return { token, user };
+    },
   },
 };
 
