@@ -34,14 +34,14 @@ export const QUERY_USER = gql`
 
 export const QUERY_COMMENTS = gql`
   query comments($post_id: ID!) {
-    comments(filter: ) {
+    comments(filter: $post_id) {
       _id
       commentContent
       commentDate
-    commentUser
+      commentUser
     }
   }
-  `;
+`;
 
 export const QUERY_POSTS = gql`
   query posts($username: String!) {
