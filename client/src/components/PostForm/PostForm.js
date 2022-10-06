@@ -9,6 +9,7 @@ import { QUERY_POSTS, QUERY_ME } from "../../utils/queries";
 const PostForm = () => {
   const [postTitle, setTitle] = useState("");
   const [postText, setText] = useState("");
+  const [postTag, setTag] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addPost, { error }] = useMutation(ADD_POST, {
@@ -34,7 +35,6 @@ const PostForm = () => {
   const handleTitleChange = (event) => {
     if (event.target.value.length <= 500000) {
       setTitle(event.target.value);
-      setCharacterCount(event.target.value.length);
     }
   };
 
@@ -45,16 +45,23 @@ const PostForm = () => {
     }
   };
 
+  const handleTagChange = (event) => {
+    if (event.target.value.length <= 500000) {
+      setTag(event.target.value);
+    }
+  };
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
       await addPost({
-        variables: { postTitle, postText },
+        variables: { postTitle, postText, postTag },
       });
 
       setTitle("");
       setText("");
+      setTag("");
       setCharacterCount(0);
     } catch (e) {
       console.error(e);
@@ -86,6 +93,16 @@ const PostForm = () => {
               value={postText}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               onChange={handleTextChange}
+            ></textarea>
+
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Tags:
+            </label>
+            <textarea
+              placeholder="Enter a location or post type tag - ex. Montreal"
+              value={postTag}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              onChange={handleTagChange}
             ></textarea>
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
