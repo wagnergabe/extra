@@ -1,18 +1,18 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_ME = gql`
-query me {
+  query me {
+    _id
+    username
+    email
+    posts {
       _id
+      postTitle
+      postText
       username
-      email
-      posts {
-        _id
-        postTitle
-        postText
-        username
-        tags
-      }
+      tags
     }
+  }
 `;
 
 export const QUERY_USER = gql`
@@ -28,6 +28,17 @@ export const QUERY_USER = gql`
         username
         tags
       }
+    }
+  }
+`;
+
+export const QUERY_COMMENTS = gql`
+  query comments($post_id: ID!) {
+    comments(filter: $post_id) {
+      _id
+      commentContent
+      commentDate
+      commentUser
     }
   }
 `;
