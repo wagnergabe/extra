@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const userSchema = new Schema(
   {
@@ -33,6 +33,7 @@ const userSchema = new Schema(
     },
   }
 );
+
 //setp up pre-save middleware to create passord
 userSchema.pre('save', async function(next) {
   if (this.isNew || this.isModified('password')) {

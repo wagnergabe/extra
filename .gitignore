@@ -1,27 +1,44 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+/node_modules
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> ca17dd0d20496845618d1692c7e870c2e037b4c2
+=======
 **/node_modules/
+>>>>>>> 867aa2a188b5717385f3442eb69ce60f82e3d33a
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 **/node_modules/
 /node_modules
 /.pnp
 .pnp.js
+<<<<<<< HEAD
+=======
 
+>>>>>>> 867aa2a188b5717385f3442eb69ce60f82e3d33a
 # testing
 /coverage
-
 # production
 /build
-
 # misc
 .DS_Store
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
-
+.env
 npm-debug.log*
 yarn-debug.log*
+<<<<<<< HEAD
 yarn-error.log*
+<<<<<<< HEAD
+=======
+yarn-error.log*
+>>>>>>> ca17dd0d20496845618d1692c7e870c2e037b4c2
+>>>>>>> ea0061d4f780b87484ca6db7b7f5b05ed35ff4ed
+=======
 **/.DS_Store
 
+>>>>>>> 867aa2a188b5717385f3442eb69ce60f82e3d33a
