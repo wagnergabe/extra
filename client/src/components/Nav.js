@@ -1,24 +1,25 @@
 import { Link } from "react-router-dom";
+import Auth from "../utils/auth";
 
 const Nav = () => {
   return (
     <div>
-      <nav class="flex items-center justify-between flex-wrap bg-black p-6">
-        <div class="flex items-center flex-shrink-0 text-white mr-6">
+      <nav className="flex items-center justify-between flex-wrap bg-black p-6">
+        <div className="flex items-center flex-shrink-0 text-white mr-6">
           <a href="/">
             <img
-              src="wandrlust-white.png"
+              src="wandrlust-whitegreen.png"
               alt="wandrlust logo"
               width="250"
             ></img>
           </a>
         </div>
 
-        <div class="w-full block flex justify-end flex-grow lg:flex lg:items-right lg:w-auto">
+        <div className="w-full block flex justify-end flex-grow lg:flex lg:items-right lg:w-auto">
           <div>
             <a
-              href="#"
-              class="inline-block text-sm px-4 py-2 leading-none text-white hover:border-transparent hover:text-green-300 hover:bg-black mt-4 lg:mt-0"
+              href="/#"
+              className="inline-block text-sm px-4 py-2 leading-none text-white hover:border-transparent hover:text-green-300 hover:bg-black mt-4 lg:mt-0"
             >
               Find a Flight
             </a>
@@ -27,7 +28,7 @@ const Nav = () => {
           <div>
             <a
               href="/form"
-              class="inline-block text-sm px-4 py-2 leading-none text-white hover:border-transparent hover:text-green-300 hover:bg-black mt-4 lg:mt-0"
+              className="inline-block text-sm px-4 py-2 leading-none text-white hover:border-transparent hover:text-green-300 hover:bg-black mt-4 lg:mt-0"
             >
               Create a Blog
             </a>
@@ -36,7 +37,7 @@ const Nav = () => {
           <div>
             <Link
               to="/blog"
-              class="inline-block text-sm px-4 py-2 leading-none text-white hover:border-transparent hover:text-green-300 hover:bg-black mt-4 lg:mt-0"
+              className="inline-block text-sm px-4 py-2 leading-none text-white hover:border-transparent hover:text-green-300 hover:bg-black mt-4 lg:mt-0"
             >
               Blogs
             </Link>

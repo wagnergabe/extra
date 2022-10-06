@@ -72,12 +72,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addPost(
-      postTitle: String!
-      postText: String!
-      username: String!
-      tags: String!
-    ): Post
+    addPost(postTitle: String!, postText: String!, tags: String!): Post
     removePost(_id: ID!): Post
     editPost(
       postTitle: String!
