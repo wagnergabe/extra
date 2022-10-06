@@ -33,6 +33,18 @@ const userSchema = new Schema(
     },
   }
 );
+//setp up pre-save middleware to create passord
+userSchema.pre('save', async function(next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
+  next();
+})
+// compare the password with harhed password
+userSchema.methods.isCorrectPassword = async function(passord) {
+  return bcrypt.compare(passord, this.passord);
+}
 
 //set up pre-save middleware to create passord
 userSchema.pre("save", async function (next) {

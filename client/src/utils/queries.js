@@ -1,18 +1,16 @@
 import { gql } from "@apollo/client";
 
 export const QUERY_ME = gql`
-  {
-    me {
+  query me {
+    _id
+    username
+    email
+    posts {
       _id
+      postTitle
+      postText
       username
-      email
-      posts {
-        _id
-        postTitle
-        postText
-        username
-        tags
-      }
+      tags
     }
   }
 `;
@@ -30,7 +28,20 @@ export const QUERY_USER = gql`
         username
         tags
       }
-  }`;
+    }
+  }
+`;
+
+export const QUERY_COMMENTS = gql`
+  query comments($post_id: ID!) {
+    comments(filter: $post_id) {
+      _id
+      commentContent
+      commentDate
+      commentUser
+    }
+  }
+`;
 
 export const QUERY_POSTS = gql`
   query posts($username: String!) {
@@ -64,4 +75,6 @@ export const QUERY_TAGGED_POSTS = gql`
       postText
       username
       tags
+    }
+  }
 `;
