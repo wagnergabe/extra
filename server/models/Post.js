@@ -17,11 +17,6 @@ const postSchema = new Schema(
       type: String,
       required: true
     },
-    },
-
-   
-    {
-    
     tags: {
       type: String,
       required: `Tag your post so people can find it!`,

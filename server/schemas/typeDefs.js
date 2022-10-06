@@ -18,7 +18,44 @@ const typeDefs = gql`
     postTitle: String
     postText: String
     username: String
+  }
+
+  input PostInput {
+    postTitle: String
+    postText: String
+    username: String
+  }
+
+  type User {
+    _id: ID
+    username: String
+    email: String
+    posts: [Post]
+  }
+
+  input UserInput {
+    username: String
+    email: String
+  }
+
+  input TagInput {
+    category: String
+    location: String
+  }
+
+  type Tag {
+    _id: ID
+    category: String
+    location: String
     tags: String
+  }
+
+  type Comment {
+    _id: ID
+    commentContent: String
+    commentDate: String
+    commentUser: User
+    commentPost: Post
   }
 
   type Query {
@@ -26,6 +63,11 @@ const typeDefs = gql`
     user(username: String!): User
     posts(username: String): [Post]
     post(_id: ID!): Post
+    post_comments(post: PostInput): [Comment]
+    user_comments(user: UserInput): [Comment]
+    comment(_id: ID!): Comment
+    tags: [Tag]
+    tag(_id: ID!): Tag
     taggedPosts(tags: String): [Post]
   }
 
@@ -44,6 +86,14 @@ const typeDefs = gql`
       username: String!
       tags: String!
     ): Post
+    addComment(
+      commentContent: String!
+      commentUser: UserInput!
+      commentPost: PostInput!
+    ): Comment
+    removeComment(_id: ID!): Comment
+    addTag(input: TagInput): Post
+    removeTag(tagId: ID!): Post
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
   }
