@@ -37,12 +37,12 @@ const Nav = () => {
           </div>
 
           <div>
-            <a
-              href="#"
+            <Link
+              to="/blog"
               class="inline-block text-sm px-4 py-2 leading-none text-white hover:border-transparent hover:text-green-300 hover:bg-black mt-4 lg:mt-0"
             >
               Blogs
-            </a>
+            </Link>
           </div>
         </div>
       </nav>
