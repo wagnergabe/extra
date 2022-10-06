@@ -46,7 +46,7 @@ const Home = () => {
                   <div>
                     <label
                       for="email"
-                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      class="block mb-2 text-sm font-medium text-white"
                     >
                       Email Address
                     </label>
@@ -60,7 +60,7 @@ const Home = () => {
                   <div>
                     <label
                       for="username"
-                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      class="block mb-2 text-sm font-medium text-white"
                     >
                       Username
                     </label>
@@ -74,7 +74,7 @@ const Home = () => {
                   <div>
                     <label
                       for="password"
-                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      class="block mb-2 text-sm font-medium text-white"
                     >
                       Password
                     </label>

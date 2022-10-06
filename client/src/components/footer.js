@@ -5,8 +5,9 @@ const Footer = () => {
         <span class="text-sm text-gray-800 sm:text-center">
           © 2022 Shane Dinh, Tricia Nghiem, Anusha, Miguel Soriano, Shatyana
           Thomas, Zee Virola, & Gabriel Wagner
-          <a href="https://flowbite.com/" className="hover:underline"></a>.
         </span>
+        <br />
+        <a href="https://flowbite.com/" className="hover:underline">Made With Flowbite</a>.
       </footer>
     </div>
   );

@@ -37,7 +37,7 @@ return (
       <h2>Signup</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
-          <label htmlFor="username">username:</label>
+          <label htmlFor="username">Username:</label>
           <input
             placeholder="username"
             name="username"
