@@ -33,6 +33,7 @@ const userSchema = new Schema(
     },
   }
 );
+
 //setp up pre-save middleware to create passord
 userSchema.pre('save', async function(next) {
   if (this.isNew || this.isModified('password')) {
