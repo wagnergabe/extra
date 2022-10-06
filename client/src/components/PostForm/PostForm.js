@@ -2,8 +2,6 @@ import React, { useState } from "react";
 
 import { useMutation } from "@apollo/client";
 import { ADD_POST } from "../../utils/mutations";
-// I'm using QUERY_ME even though it hasn't been set up yet //
-// So we need to make sure to set that up before we're finished //
 import { QUERY_POSTS, QUERY_ME } from "../../utils/queries";
 
 const PostForm = () => {
