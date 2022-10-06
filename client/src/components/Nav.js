@@ -21,7 +21,7 @@ const Nav = () => {
           <div>
             <a
               href="#"
-              class="inline-block text-sm px-4 py-2 leading-none text-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
+              class="inline-block text-sm px-4 py-2 leading-none text-white hover:border-transparent hover:text-green-300 hover:bg-black mt-4 lg:mt-0"
             >
               Find a Flight
             </a>
@@ -30,7 +30,7 @@ const Nav = () => {
           <div>
             <a
               href="#"
-              class="inline-block text-sm px-4 py-2 leading-none text-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
+              class="inline-block text-sm px-4 py-2 leading-none text-white hover:border-transparent hover:text-green-300 hover:bg-black mt-4 lg:mt-0"
             >
               Create a Blog
             </a>
@@ -39,7 +39,7 @@ const Nav = () => {
           <div>
             <a
               href="#"
-              class="inline-block text-sm px-4 py-2 leading-none text-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
+              class="inline-block text-sm px-4 py-2 leading-none text-white hover:border-transparent hover:text-green-300 hover:bg-black mt-4 lg:mt-0"
             >
               Blogs
             </a>
