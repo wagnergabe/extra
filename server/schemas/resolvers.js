@@ -6,16 +6,25 @@ const { Comment } = require("../models");
 
 const resolvers = {
   Query: {
+    me: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({
+          _id: context.user._id,
+        }).select("-__v -password");
+
+        return userData;
+      }
+    },
     posts: async (parent, { username }) => {
       const params = username ? { username } : {};
       return Post.find(params);
     },
     post: async (parent, { _id }) => {
-      return Post.findOneAndUpdate({ _id });
+      return Post.findOne({ _id });
     },
-    tag: async (parent, { tagId }) => {
-      const params = tagId ? { tagId } : {};
-      return Post.find({ params });
+    taggedPosts: async (parent, { tags }) => {
+      const params = tags ? { tags } : {};
+      return Post.find(params);
     },
     post_comments: async (parent, { _id }) => {
       return Comment.find(params);
@@ -27,6 +36,7 @@ const resolvers = {
       return Comment.findOneAndUpdate({ _id });
     },
     //get a user by username
+    // get a user by username
     user: async (parent, { username }) => {
       return User.findOne({ username }).select("__v -password");
     },
@@ -114,30 +124,16 @@ const resolvers = {
     addTag: async (parent, { postId, category, location }) => {
       if (context.post) {
         const updatedPost = await Post.findOneAndUpdate(
-          { _id: postId },
           {
-            $push: {
-              tags: { category, location },
-            },
+            ...args,
+            username: context.user.username,
           },
-          { new: true }
+          { _id: context.post._id },
+          { $push: { posts: { postId: _id } } }
         );
-
         return updatedPost;
       }
     },
-    removeTag: async (parent, { tagId }, context) => {
-      if (context.post) {
-        const updatedPost = await Post.findOneAndUpdate(
-          { _id: tagId },
-          { $pull: { tags: { tagId: tagId } } },
-          { new: true }
-        );
-
-        return updatedPost;
-      }
-    },
-
     // login info
     addUser: async (parent, args) => {
       const user = await User.create(args);
