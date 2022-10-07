@@ -16,6 +16,7 @@ import PostForm from "./components/PostForm/PostForm";
 import TripForm from './components/TripForm';
 import TripInfo from './components/TripInfo';
 import Footer from "./components/footer";
+import FlightSearchPage from "./pages/FlightSearchPage";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -48,6 +49,7 @@ function App() {
               <Route path="/blog" element={<PostList />} />
               <Route path="/form" element={<PostForm />} />
               <Route path='/tripform' element={<TripForm />} />
+              <Route path="/FlightSearchPage" element={<FlightSearchPage />} />
               <Route path='/tripinfo' element={<TripInfo />} />
             </Routes>
           </div>
