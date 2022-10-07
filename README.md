@@ -34,7 +34,8 @@ SO THAT I can help others find what they are looking and organize my post
 
 
 ## Screenshot
-![screenshot](https://i.ibb.co/r4PMNDt/Screen-Shot-2022-10-06-at-9-46-19-AM.png)
+<img width="1427" alt="Screen Shot 2022-10-06 at 10 58 33 PM" src="https://user-images.githubusercontent.com/104178313/194465406-5329e7ed-bf46-452a-80a1-f189794a0eab.png">
+
 
 
 ## Technologies used: 
