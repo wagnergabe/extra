@@ -10,7 +10,7 @@ function usePlacesQuery(query) {
             const options = {
                 method: "GET",
                 headers: {
-                    "x-rapidapi-key": "c737fcd0c7msh5fa329ffdeccbb7p126602jsn5c0e57a85a8b",
+                    "x-rapidapi-key": "XXX",
                     "x-rapidapi-host": "priceline-com-provider.p.rapidapi.com",
                     "useQueryString": true
                 }
@@ -53,7 +53,7 @@ async function APICall(origin, destination, outboundDate, inboundDate,) {
     const options = {
         method: "GET",
         headers: {
-            "x-rapidapi-key": "c737fcd0c7msh5fa329ffdeccbb7p126602jsn5c0e57a85a8b",
+            "x-rapidapi-key": "XXX",
             "x-rapidapi-host": "priceline-com-provider.p.rapidapi.com",
         }
     };
