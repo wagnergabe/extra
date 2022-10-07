@@ -6,6 +6,8 @@ const Footer = () => {
           © 2022 Shane Dinh, Tricia Nghiem, Anusha, Miguel Soriano, Shatyana
           Thomas, Zee Virola, & Gabriel Wagner
         </span>
+        <br />
+        <a href="https://flowbite.com/" className="hover:underline">Made With Flowbite</a>.
       </footer>
     </div>
   );

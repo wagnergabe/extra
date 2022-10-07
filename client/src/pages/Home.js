@@ -44,7 +44,10 @@ const Home = () => {
                 </p>
                 <form>
                   <div>
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    <label
+                      for="email"
+                      class="block mb-2 text-sm font-medium text-white"
+                    >
                       Email Address
                     </label>
                     <input
@@ -55,7 +58,7 @@ const Home = () => {
                   </div>
 
                   <div>
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    <label className="block mb-2 text-sm font-medium text-white">
                       Username
                     </label>
                     <input
@@ -66,7 +69,7 @@ const Home = () => {
                   </div>
 
                   <div>
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    <label className="block mb-2 text-sm font-medium text-white">
                       Password
                     </label>
                     <input
