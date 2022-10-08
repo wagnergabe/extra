@@ -1,3 +1,4 @@
+
 const TripInfo = ({ trip }) => {
     return (
         <div className="trip-info">

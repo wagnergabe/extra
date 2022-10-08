@@ -17,6 +17,8 @@
 <<<<<<< HEAD
 =======
 
+node_modules
+
 >>>>>>> 867aa2a188b5717385f3442eb69ce60f82e3d33a
 # testing
 /coverage
